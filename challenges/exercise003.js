@@ -27,9 +27,10 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  //var g = people.flat();
+  //var g = people();
+  console.log(people[2]);
  
-  console.log(table.people);
+  //console.log(table.people);
 
 //var count = arr.reduce(function(n, val) {
   //  return n + (val === search);
