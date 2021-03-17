@@ -1,8 +1,6 @@
 function getSquares(nums) {
   if (nums === undefined) throw new Error("nums is required");
-  //var result = Math.sqrt(nums);
-  //console.log(result);
-  return nums.map(v => Math.pow(v, 2));
+    return nums.map(v => Math.pow(v, 2));
 }
 
 function camelCaseWords(words) {
@@ -12,9 +10,7 @@ function camelCaseWords(words) {
       let currentStr = words[i];
       let tempStr = currentStr.toLowerCase();
       if(i != 0) {
-	
-        // convert first letter to upper case (the word is in lowercase) 
-          tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1);
+	    tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1);
 
        }
       
@@ -27,32 +23,45 @@ function camelCaseWords(words) {
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
-  //var g = people();
-  console.log(people[2]);
- 
-  //console.log(table.people);
+  const subjects = people.reduce((acc, curr) => {
+    return acc + curr.subjects.length;
+  }, 0);
 
-//var count = arr.reduce(function(n, val) {
-  //  return n + (val === search);
-//}, 0);
-//return count;
+  return subjects;
 }
+
 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  // Your code here!
+  for (let i = 0; i < menu.length; i++) {
+    if (menu[i].ingredients.includes(ingredient)) {
+      return true;
+    }
+  }
+
+  return false;
 }
+
 
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  var z = arr1.filter(function(val) {
-    return arr2.indexOf(val) != -1;
-  });
-  
-  return z.sort((a, b) => a - b);
-  
+
+  const duplicatesNum = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+    for (let a = 0; a < arr2.length; a++) {
+
+      if (arr1[i] === arr2[a]) {
+        if (!duplicatesNum.includes(arr1[i])) {
+          duplicatesNum.push(arr1[i]);
+        }
+      }
+
+    }
+  }
+  return duplicatesNum.sort();
 }
 
 module.exports = {
